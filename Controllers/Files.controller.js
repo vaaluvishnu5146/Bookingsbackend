@@ -27,4 +27,12 @@ FilesRouter.get('/createCustomFile/:content', (request, response, next) => {
   });
 });
 
+FilesRouter.post('/createCustomFile', async (request, response, next) => {
+  const { content } = request.body;
+  await createFile(content);
+  return response.status(200).json({
+    message: 'File created',
+  });
+});
+
 module.exports = FilesRouter;
