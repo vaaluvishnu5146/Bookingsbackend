@@ -14,7 +14,7 @@ HTTP_SERVER.use(bodyParser.json());
 HTTP_SERVER.use(bodyParser.urlencoded({ extended: false }));
 
 // INJECTING DATABSE CONNECTION
-require("./Database/dbConfig");
+// require("./Database/dbConfig");
 
 // BASIC SERVER CONFIGS
 const PORT = 5000;
