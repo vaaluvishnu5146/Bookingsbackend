@@ -5,5 +5,6 @@ const APP_SERVER = express();
 APP_SERVER.use("/files", require("./Controllers/Files.controller"));
 APP_SERVER.use("/todos", require("./Controllers/Todos.controller"));
 APP_SERVER.use("/users", require("./Controllers/Users.controller"));
+APP_SERVER.use("/mahal", require("./Controllers/Mahal.controller"));
 
 module.exports = APP_SERVER;
