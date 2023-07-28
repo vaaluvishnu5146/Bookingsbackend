@@ -31,8 +31,8 @@ const MahalSchema = new Schema({
   },
   createdAt: { type: Date, default: new Date() },
   updatedAt: { type: Date, default: new Date() },
-  createdBy: { type: String, required: true }, // Schema.Types.ObjectId
-  updatedBy: { type: String, required: true }, // Schema.Types.ObjectId
+  createdBy: { type: String, required: false }, // Schema.Types.ObjectId
+  updatedBy: { type: String, required: false }, // Schema.Types.ObjectId
 });
 
 module.exports = mongoose.model("mahal", MahalSchema);
