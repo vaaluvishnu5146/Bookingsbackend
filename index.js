@@ -4,7 +4,9 @@ const express = require("express");
 const HTTP_SERVER = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
+// ENABLING ENVIRONMENT VARIABLE CONFIGS
+require("dotenv").config();
+console.log(process.env);
 // CONFIGURING CORS
 // HTTP_SERVER.use(cors());
 
@@ -14,7 +16,7 @@ HTTP_SERVER.use(bodyParser.json());
 HTTP_SERVER.use(bodyParser.urlencoded({ extended: false }));
 
 // INJECTING DATABSE CONNECTION
-// require("./Database/dbConfig");
+require("./Database/dbConfig");
 
 // BASIC SERVER CONFIGS
 const PORT = 5000;
