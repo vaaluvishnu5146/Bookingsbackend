@@ -14,6 +14,10 @@ const UserSchema = new Schema({
   phoneNumber: String,
   gender: String,
   age: Number,
+  password: {
+    type: String,
+    required: true,
+  },
   addressDetails: {
     addressLine1: String,
     addressLine2: String,
