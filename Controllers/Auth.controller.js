@@ -1,6 +1,6 @@
 const AuthRouter = require("express").Router();
 const UserModel = require("../Models/Users.model");
-const { comparePasswords } = require("../utils/Auth.utils");
+const { comparePasswords, generateToken } = require("../utils/Auth.utils");
 var mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -13,15 +13,22 @@ const saltRounds = 10;
  */
 AuthRouter.post("/signin", async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(req.body);
   UserModel.findOne({ email: email })
     .then(async (cursor) => {
-      console.log(cursor);
       if (cursor && cursor._id) {
         const isMatching = await comparePasswords(password, cursor.password);
         if (isMatching) {
+          const newToken = generateToken(
+            {
+              name: cursor.firstName,
+              role: ["admin"],
+            },
+            process.env.JWT_TOKEN_SECRET
+          );
+          console.log("TOKEN HERE", newToken);
           return res.status(200).json({
             success: true,
+            token: newToken,
             message: "Login Successful!!",
           });
         } else {
