@@ -7,7 +7,7 @@ const MahalSchema = new Schema({
   mahalName: String,
   mahalImages: {
     type: Array,
-    required: true,
+    required: false,
   },
   mahalFeatures: {
     seatingCapacity: { type: Number, required: true },

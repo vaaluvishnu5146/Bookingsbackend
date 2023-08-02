@@ -42,8 +42,32 @@ MahalRouter.get("/", (req, res, next) => {
 MahalRouter.post("/create", (req, res, next) => {
   // Getting details from request object
   const data = req.body;
+  console.log(req.body);
   // Creating Mahal Model data
-  const Mahal = new MahalModel(data);
+  const Mahal = new MahalModel({
+    mahalName: data.mahalName,
+    mahalImages: data.mahalImages,
+    mahalFeatures: {
+      seatingCapacity: data.seatingCapacity,
+      parking: data.parking,
+      diningCapacity: data.diningCapacity,
+    },
+    pricingDetails: {
+      pricingPerHour: data.pricingPerHour,
+      pricingPerDay: data.pricingPerDay,
+    },
+    addressDetails: {
+      addressLine1: data.addressLine1,
+      addressLine2: data.addressLine2,
+      city: data.city,
+      state: data.state,
+      pinCode: data.pincode,
+    },
+    contactDetails: {
+      primaryPhone: data.primaryPhone,
+      secondaryPhone: data.secondaryPhone,
+    },
+  });
   // Save query
   Mahal.save()
     .then((response) => {
